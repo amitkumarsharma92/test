@@ -30,7 +30,7 @@ llist* get_list(){
 	return head;
 }
 
-void main(){
+int main(){
 	llist *list = get_list();
 	printf("\nGot all values\n Print them:-\n");
 	while (list != NULL){

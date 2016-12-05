@@ -15,7 +15,7 @@ llist* get_list(){
 	for (i = 0 ; i < 6 ; i++){
 		temp = (llist*)malloc(sizeof(llist));
 		temp->value = a[i];
-		printf("\npicking %d .", a[i]);
+		//printf("\npicking %d .", a[i]);
 		temp->next = NULL;
 		
 		if (head == NULL){
@@ -23,18 +23,34 @@ llist* get_list(){
 			prev = temp;
 		}else{
 			prev->next = temp;
-			printf("\nThe previous is %d.", prev->value);
 			prev = prev->next;
 		}
 	}
 	return head;
 }
 
-void main(){
+int main(){
 	llist *list = get_list();
-	printf("\nGot all values\n Print them:-\n");
+	llist *head = list;
+	printf("\nGot all values\n Printing them:-\n");
 	while (list != NULL){
 		printf("%d ", list->value);
 		list = list->next;
 	}
+	
+	llist *current=head, *prev =NULL , * temp =NULL;
+	
+	while (current != NULL){
+		temp = current->next;
+		current->next = prev;
+		prev = current;
+		current =temp; 
+	}
+	printf("\nGot all values Reveresed\n Printing them:-\n");
+	list = prev;
+	while (list != NULL){
+		printf("%d ", list->value);
+		list = list->next;
+	}
+	
 }
